@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="you-qr-result"></div>
+    <h1>scan qr html</h1>
+    <div style="display: flex; justify-content: center;">
+        <div id="my-qr-reader" style="width:500px;"></div>
+    </div>
+
+    <script src="./html5-qrcode.min.js"></script>
+
+    <script>
+
+        function domReady(fn){
+            if(document.readyState === 'complete' || document.readyState === 'interactive'){
+                setTimeout(fn, 1);
+            }else{
+                document.addEventListener('DOMContentLoaded', fn);
+            }
+        }
+
+        domReady(function(){
+            var myqr = document.getElementById('my-qr-reader');
+            var lastResult, countResults = 0;
+
+            function onScanSuccess(decodeText, decodeResult){
+                alert("You qr is : " + decodeText);
+                if(decodeText != lastResult){
+                    ++countResults;
+                    lastResult = decodeText;
+
+                    alert("You qr is : " + decodeText, decodeResult);
+                    myqr.innerHTML = `<b>${countResults}</b> - ${decodeText}`;
+                }
+            }
+
+            function onScanError(errorMessage) {
+                console.log(errorMessage);
+            }
+
+            var html5QrcodeScanner = new Html5QrcodeScanner(
+                "my-qr-reader", { fps: 10, qrbox: 250 });
+            html5QrcodeScanner.render(onScanSuccess, onScanError);
+
+        });
+    </script>
+</body>
+</html>
