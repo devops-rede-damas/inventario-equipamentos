@@ -125,7 +125,7 @@ class HomologationEquipmentController extends Controller
         $homologationEquipment->observations = $request->observation;
         $homologationEquipment->save();
 
-        if ($request->status_equip) {
+        if ($request->status_equip == "Manter") {
             $equipment->status = $request->status_equip;
             $equipment->save();
         }

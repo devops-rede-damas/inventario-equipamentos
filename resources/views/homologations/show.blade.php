@@ -151,14 +151,10 @@
                     <div class="mb-3">
                         <label for="status" class="form-label">Mover para status</label>
                         <select class="form-select" id="status_equip" name="status_equip" required>
-                            <option value="" disabled selected>Manter atual</option>
+                            <option value="Manter" selected>Manter atual</option>
                             <option value="Manutenção">Manutenção</option>
                             <option value="Disponível">Disponível</option>
                         </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="observation">Observação</label>
-                        <textarea class="form-control" id="observation" rows="3"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="observation">Observação</label>
